@@ -9,7 +9,7 @@ metadata:
 data:
   mapRoles: |
     #- rolearn:  arn:aws:iam::AccountId:role/devel-worker-nodes-NodeInstanceRole-14W1I3VCZQHU7
-    - rolearn:  arn:aws:iam::047786125310:role/kubernetes_deployment
+    - rolearn:  arn:aws:iam::047786125310:role/codebuild-role
       username: system:node:{{EC2PrivateDNSName}}
       groups:
         - system:bootstrappers
