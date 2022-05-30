@@ -15,6 +15,12 @@ data:
     - groups:
       - system:bootstrappers
       rolearn: arn:aws:iam::047786125310:role/kubernetes_deployment/codebuild-role
+    - "groups":
+      - "system:bootstrappers"
+      - "system:nodes"
+      "rolearn": "arn:aws:iam::047786125310:role/my-cluster2022053006112145490000000e"
+      "username": "system:node:{{EC2PrivateDNSName}}"
+
   mapUsers: |
     - groups:
       - system:bootstrappers
