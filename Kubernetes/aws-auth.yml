@@ -10,11 +10,11 @@ data:
     - groups:
       - system:bootstrappers
       - system:nodes
-      rolearn: arn:aws:iam::047786125310:role/my-cluster2022053006112145490000000e
+      rolearn: arn:aws:iam::047786125310:role/codebuild-role
       username: system:node:{{EC2PrivateDNSName}}
     - groups:
       - system:bootstrappers
-      rolearn: arn:aws:iam::047786125310:role/my-cluster2022053006112145490000000e
+      rolearn: arn:aws:iam::047786125310:role/codebuild-role
   mapUsers: |
     - groups:
       - system:bootstrappers
