@@ -1,20 +1,32 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
 apiVersion: v1
-
+data:
+  mapAccounts: |
+    []
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::047786125310:role/my-cluster2022053006112145490000000e
+      username: system:node:{{EC2PrivateDNSName}}
+    - groups:
+      - system:bootstrappers
+      rolearn: arn:aws:iam::047786125310:role/my-cluster2022053006112145490000000e
+  mapUsers: |
+    - groups:
+      - system:bootstrappers
+      userarn: arn:aws:iam::047786125310:user/Administrator
 kind: ConfigMap
-
 metadata:
+  creationTimestamp: "2022-05-30T06:11:33Z"
+  labels:
+    app.kubernetes.io/managed-by: Terraform
+    terraform.io/module: terraform-aws-modules.eks.aws
   name: aws-auth
   namespace: kube-system
+  resourceVersion: "6052"
+  uid: a7f15c3c-dfa4-4fe6-b981-0da51f8a4c6c
 
-data:
-  mapRoles: |
-    #- rolearn:  arn:aws:iam::AccountId:role/devel-worker-nodes-NodeInstanceRole-14W1I3VCZQHU7
-    - rolearn:  arn:aws:iam::047786125310:role/codebuild-role
-      username: system:node:{{EC2PrivateDNSName}}
-      groups:
-        - system:bootstrappers
-        - system:nodes
-    - rolearn: arn:aws:iam::047786125310:role/codebuild-role
-      username: build
-      groups:
-        - system:masters
