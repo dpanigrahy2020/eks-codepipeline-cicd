@@ -1,31 +1,30 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
 apiVersion: v1
-
-kind: ConfigMap
-
-metadata:
-
-  name: aws-auth
-
-  namespace: kube-system
-
 data:
-
   mapRoles: |
-
-    - rolearn:  arn:aws:iam::047786125310:role/devel-worker-nodes-NodeInstanceRole-14W1I3VCZQHU7
-
+    - groups:
+      - system:bootstrappers
+      - system:nodes	
+      rolearn:  arn:aws:iam::047786125310:role/devel-worker-nodes-NodeInstanceRole-14W1I3VCZQHU7
       username: system:node:{{EC2PrivateDNSName}}
-
-      groups:
-
-        - system:bootstrappers
-
-        - system:nodes
-
-    - rolearn: arn:aws:iam::047786125310:role/CodeBuildKubectlRole
-
+    - groups:
+      - system:masters
+      rolearn: arn:aws:iam::047786125310:role/kubernetes_deployment
       username: build
-
-      groups:
-
-        - system:masters
+    - groups:
+      - system:masters
+      rolearn: arn:aws:iam::047786125310:role/eksctl-my-cluster-cluster-ServiceRole-1WLSF6D72CZPV
+      username: build
+  mapUsers: |
+    []
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2022-05-25T10:15:26Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "29113"
+  selfLink: /api/v1/namespaces/kube-system/configmaps/aws-auth
+  uid: b4364530-d2c9-48c5-98bd-82d9126ad3e6
