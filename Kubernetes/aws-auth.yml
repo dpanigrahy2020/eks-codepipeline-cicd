@@ -14,6 +14,10 @@ data:
       - system:masters
       rolearn: arn:aws:iam::047786125310:role/kubernetes_deployment
       username: build
+    - groups:
+      - system:masters
+      rolearn: arn:aws:iam::047786125310:role/eksctl-my-cluster-cluster-ServiceRole-1WLSF6D72CZPV
+      username: build
   mapUsers: |
     []
 kind: ConfigMap
